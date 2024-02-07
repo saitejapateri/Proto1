@@ -2,7 +2,7 @@ import {createSlice, configureStore} from '@reduxjs/toolkit'
 
 
 const initialLoginState = {login : false}
-const initialUnitState = {selectedUnitId : null}
+const initialUnitState = {selectedUnitId : 0}
 
 const loginSlice = createSlice({
     name : 'loginSlice',
@@ -21,12 +21,9 @@ const unitSlice = createSlice({
     name : 'unitSlice',
     initialState : initialUnitState,
     reducers : {
-        openUnit(state,action){
+        selectUnit(state,action){
             state.selectedUnitId = action.payload;
         },
-        closeUnit(state){
-            state.selectedUnitId = null;
-        }
     }
 })
 

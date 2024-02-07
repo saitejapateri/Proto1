@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux'
 import { Grid } from "@mui/material";
 import palette from "../theme/palette.js";
 import CourseDetails from "../features/Course/common/CourseDetails.jsx";
@@ -13,6 +14,8 @@ function CoursePage() {
   const { courseId } = useParams();
   const [courseData, setCourseData] = useState(null);
   console.log(courseData);
+
+  const selectedUnit = useSelector(state => state.unit.selectedUnitId);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,11 +58,8 @@ function CoursePage() {
           <UnitsContainer units={courseData.data.units} />
 
           {/* Accordions */}
-          {
-            courseData.data.units.map((unit) => (
-              <AccordionsContainer topics={unit.topics} />
-            ))
-          }
+          <AccordionsContainer topics={courseData.data.units[selectedUnit].topics} />
+
 
         </>
       ) : (

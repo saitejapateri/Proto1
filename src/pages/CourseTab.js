@@ -66,14 +66,14 @@ function CourseTab() {
   //handling selectedUnit
   const selectedUnitId = useSelector((state) => state.unit.selectedUnitId);
   const dispatch = useDispatch();
-  const handleUnitClick = (unitId) => {
-    console.log(unitId);
-    if (selectedUnitId === unitId) {
-      dispatch(unitActions.closeUnit());
-    } else {
-      dispatch(unitActions.openUnit(unitId));
-    }
-  };
+  // const handleUnitClick = (unitId) => {
+  //   console.log(unitId);
+  //   if (selectedUnitId === unitId) {
+  //     dispatch(unitActions.closeUnit());
+  //   } else {
+  //     dispatch(unitActions.openUnit(unitId));
+  //   }
+  // };
 
   return (
     <div id="course-page" style={{backgroundColor : palette.primary[0]}}>
@@ -147,7 +147,7 @@ function CourseTab() {
                     key={unit.unit_id}
                     topics={unit.topics}
                     id={unit.unit_id}
-                    onClick={handleUnitClick}
+                    // onClick={handleUnitClick}
                   />
                 ))}
                 <Search />
