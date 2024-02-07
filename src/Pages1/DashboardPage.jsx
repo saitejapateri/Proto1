@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment} from "react";
+import {useDispatch} from 'react-redux'
 import palette from "../theme/palette";
 import { Grid, Box, Typography } from "@mui/material";
 import AssessmentDetailsSkeleton from "../features/Dashboard/AssessmentDetailsSkeletion";
@@ -10,11 +11,13 @@ import ReactCalendarComp from "../features/Dashboard/ReactCalendarComp";
 import LeaderBoardCard from "../components/common/LeaderBoardCard";
 import MuiLeaderboardDrawar from "../features/Dashboard/MuiLeaderboardDrawar";
 import Courses from "../features/Dashboard/Courses.jsx";
+import { profileActions } from "../store";
 
 function DashboardPage() {
   const [data, setData] = useState({});
   const [assessmentData, setAssessmentData] = useState({});
   const [drawerState, setDrawarState] = useState(false);
+  const dispatch = useDispatch();
 
   //handling leaderboardDrawar component
   const handleDrawar = () => {
@@ -38,6 +41,12 @@ function DashboardPage() {
 
         setData(dashboardData);
         setAssessmentData(assessmentsDetails);
+
+        dispatch(profileActions.updateProfile({
+          name : dashboardData.name,
+          email : dashboardData.email,
+          profileImg : dashboardData.profile_picture
+        }))
       } catch (error) {
         console.error("Error fetching data:", error);
       }

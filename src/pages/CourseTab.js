@@ -9,7 +9,6 @@ import palette from "../theme/palette.js";
 import Units from "./Units.js";
 import Search from "./Search.js";
 import CustomCard from "../components/common/CustomCard.jsx";
-import Accordian from "./Accordian.js";
 import { unitActions } from "../store/index.js";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -151,16 +150,6 @@ function CourseTab() {
                   />
                 ))}
                 <Search />
-              </div>
-              <div id="accordians">
-                {data.units.map((unit) => (
-                  <Accordian
-                    title={unit.unit_name}
-                    key={unit.unit_id}
-                    topics={unit.topics}
-                    expand={selectedUnitId === unit.unit_id}
-                  />
-                ))}
               </div>
             </div>
           </>

@@ -1,9 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
+import {useSelector} from 'react-redux';
 import { Stack, Box, Typography } from "@mui/material";
-import avatar from "../images/avatar.png";
+import MuiCustomProfileMenu from "../components/common/MuiCustomProfileMenu";
 import palette from "../theme/palette";
 
 function TopNavigation() {
+
+  const {name, email, profileImg} = useSelector(state => state.profile)
+  const [anchorEl, setAnchorEl] = useState(null);
+
+
+  const handleProfileClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
   return (
     <>
       <Box
@@ -28,18 +42,20 @@ function TopNavigation() {
               marginLeft: "18px",
             }}
           >
-            Good morning, Maharram 👋
+            Good morning, {name?.split(" ")[0]} 👋
           </Typography>
         </Stack>
         <Stack sx={{ marginTop: "15px", marginRight: "40px" }}>
           <img
-            src={avatar}
+            src={profileImg}
             width={"50px"}
             height={"50px"}
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", cursor : 'pointer'}}
+            onClick={handleProfileClick}
           />
         </Stack>
       </Box>
+      <MuiCustomProfileMenu anchorEl={anchorEl} handleClose={handleClose}/>
     </>
   );
 }
