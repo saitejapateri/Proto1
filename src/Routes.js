@@ -4,9 +4,7 @@ import Login from './pages/Login';
 import Root from './pages/Root';
 import DashboardPage from './Pages1/DashboardPage.jsx';
 import CoursePage from './Pages1/CoursePage.jsx'
-import Layout from './pages/Layout.js'
-import CourseTab from './pages/CourseTab';
-import Grid from './pages/MuiGrid';
+
 
 const AppRouter = () => {
   return (
