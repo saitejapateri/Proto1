@@ -30,7 +30,7 @@ const MuiCustomTableWithSortandSelect = (props) => {
   const {
     // HeaderArr,
     // tableData,
-    data,
+    assessments,
     viewStudentResult,
     sortHandler,
     selectHandler,
@@ -41,12 +41,12 @@ const MuiCustomTableWithSortandSelect = (props) => {
     submissionTypesToShowinStudentTable,
   } = props;
 
+  console.log(assessments)
   const [startingIndex,setStartingIndex] = useState(0) 
   const [semester,setSemester] = useState(1)
 
-  console.log(data)
-
-  const assessments = data.assessments?.filter((assessment) => assessment.semester === semester)
+  //filtering assessment data based on selected semester
+  const filteredAssessments = assessments?.filter((assessment) => assessment.semester === semester)
 
   //handling Semester
   const handleSemester = (arrow) => {
@@ -61,7 +61,7 @@ const MuiCustomTableWithSortandSelect = (props) => {
 
   const tablePaginationHandler = (event,value) => {
     console.log(value)
-    setStartingIndex((value-1) * 10);
+    setStartingIndex((value-1) * 8);
   }
   
   return (
@@ -86,9 +86,9 @@ const MuiCustomTableWithSortandSelect = (props) => {
           <TableHead
             sx={{
               // position: "",
-              top: "162px",
+              // top: "162px",
               zIndex: 100,
-              background: "white",
+              // background: "white",
             }}
           >
             <MuiCustomTableHeaderRowWithSortandSelect
@@ -98,7 +98,7 @@ const MuiCustomTableWithSortandSelect = (props) => {
             />
           </TableHead>
           <TableBody>
-            {assessments?.slice(startingIndex,startingIndex + 8).map((stu, i) => (
+            {filteredAssessments?.slice(startingIndex,startingIndex + 8).map((stu, i) => (
               <MuiCustomStudentTableRow
                 stu={stu}
                 key={i}
@@ -116,7 +116,7 @@ const MuiCustomTableWithSortandSelect = (props) => {
         // sx={{ marginTop: "1rem" }}
       >
         <Pagination
-          count={Math.ceil(data.assessments?.length / 8)}
+          count={Math.ceil(assessments?.length / 8)}
           //   filtered_studentAssessmentList?.filter((stu) =>
           //     submissionTypesToShowinStudentTable.includes(stu.submission_type)
           //   ).length / 15

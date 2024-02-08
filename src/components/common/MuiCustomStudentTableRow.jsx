@@ -10,6 +10,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 // import { RightArrowIcon } from '../../../../assets/Svg/RightArrowIcon'
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
+import palette from "../../theme/palette";
 
 function secondsToMinutes(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -48,12 +49,15 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
 
   return (
     <TableRow
-      onClick={() => {
-        viewStudentResult(stu);
-      }}
+      // onClick={() => {
+      //   viewStudentResult(stu);
+      // }}
       key={key}
       sx={{
         cursor: "pointer",
+        // display : 'flex',
+        // flexDirection : 'row',
+        // justifyContent : 'space-evenly',
         background:
           stu.submission_type === "not attempted"
             ? theme.palette.error[200]
