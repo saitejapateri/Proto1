@@ -3,16 +3,16 @@ import CustomCard1 from './CustomCard1'
 import { Stack, Typography } from '@mui/material'
 import LeaderRanking from './LeaderRanking'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import LeaderBoardSkeleton from "../../pages/LeaderBoardSkeleton.jsx";
+import LeaderBoardSkeleton from "./LeaderBoardSkeleton";
 import './LeaderBoardCard.css'
 import palette from '../../theme/palette';
 
 const LeaderBoardCard = ({ data, width = '100%', height = '100%', onClick}) => {
 
-    // console.log(data, '--> LeaderBoardCard')
-    const handleClick = () => {
-        console.log("clicked")
-    }
+    // // console.log(data, '--> LeaderBoardCard')
+    // const handleClick = () => {
+    //     console.log("clicked")
+    // }
 
     return (
         <CustomCard1 width={width} height={height}>

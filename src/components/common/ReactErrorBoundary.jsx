@@ -1,10 +1,10 @@
 import ErrorPage from "./ErrorPage";
 import { ErrorBoundary } from "react-error-boundary";
 
-export default function ReactErrorBoundary({children, error}) {
+export default function ReactErrorBoundary({children}) {
   return (
     <ErrorBoundary
-      FallbackComponent={(fallbackProps) => <ErrorPage {...fallbackProps} error={error} />}
+      FallbackComponent={ErrorPage}
       onError={(error, errorInfo) => {
         // log the error
         console.log("Error caught!");

@@ -1,6 +1,6 @@
 import React from "react";
 import { SwipeableDrawer, Typography, Stack } from "@mui/material";
-import LeaderRanking from "../../components/common/LeaderRanking";
+import LeaderRanking from "./LeaderRanking";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import typography from "../../theme/typography.js";
 import palette from "../../theme/palette.js";

@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Login from './pages/Login';
 import Root from './pages/Root';
-import DashboardPage from './Pages1/DashboardPage.jsx';
-import CoursePage from './Pages1/CoursePage.jsx'
+import DashboardPage from './pages/DashboardPage.jsx';
+import CoursePage from './pages/CoursePage'
 
 
 const AppRouter = () => {

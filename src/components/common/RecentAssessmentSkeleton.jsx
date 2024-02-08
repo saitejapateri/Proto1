@@ -2,7 +2,7 @@ import Skeleton from '@mui/material/Skeleton';
 import {Stack} from '@mui/material';
 import React from 'react'
 
-function BarSkeleton() {
+function RecentAssessmentSkeleton() {
   return <Stack sx={{width:'98%', height:'300px'}} spacing={1}>
     <Stack>
         <Skeleton variant="rounded" width="20%"/>
@@ -11,4 +11,4 @@ function BarSkeleton() {
   </Stack>
 }
 
-export default BarSkeleton
+export default RecentAssessmentSkeleton;
