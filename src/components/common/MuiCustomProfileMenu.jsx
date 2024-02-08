@@ -5,6 +5,7 @@ import { Menu, MenuItem, Stack, Typography, Box, Badge } from "@mui/material";
 import logoutImg from "../../images/logout.svg";
 import palette from "../../theme/palette";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import editLogo from '../../images/edit.svg'
 import { Avatar } from "@mui/material";
 
 function MuiCustomProfileMenu({ anchorEl, handleClose }) {
@@ -27,34 +28,37 @@ function MuiCustomProfileMenu({ anchorEl, handleClose }) {
 
   return (
     <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-      <MenuItem sx={{ ...commonStyles }}>
+      <MenuItem sx={{ ...commonStyles }} autoFocus={false}>
         <Stack>
-          <Badge
-            overlap="circular"
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            // badgeContent={
-            //   <Avatar
-            //     sx={{
-            //       backgroundColor: "secondary.main",
-            //       width: 20,
-            //       height: 20,
-            //     }}
-            //   >
-            //     <EditOutlinedIcon color='primary' />
-            //   </Avatar>
-            // }
-          >
-            <img
-              src={profileImg}
-              alt="profile-picture"
-              width="50px"
-              height="50px"
-              style={{ borderRadius: "50%", margin: "auto" }}
-            />
-          </Badge>
+          <Box sx={{margin : 'auto'}}>
+            <Badge
+              overlap="circular"
+              size = "small"
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              badgeContent={
+                <Avatar
+                  sx={{
+                    backgroundColor: palette.primary[0],
+                    width : '15px',
+                    height : '15px'
+                  }}
+                >
+                  <img src={editLogo}/>
+                </Avatar>
+              }
+            >
+              <img
+                src={profileImg}
+                alt="profile-picture"
+                width="50px"
+                height="50px"
+                style={{ borderRadius: "50%", margin: "auto" }}
+              />
+            </Badge>
+          </Box>
           <Typography variant="body5" sx={{ marginTop: "10px" }}>
             {name}
           </Typography>

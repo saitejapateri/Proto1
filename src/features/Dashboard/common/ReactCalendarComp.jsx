@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Stack } from "@mui/material";
 import ReactCalendar from "../../../components/common/ReactCalendar/ReactCalendar";
+import CalendarSkeleton from "../../../components/common/CalendarSkeleton";
 
 function ReactCalendarComp() {
+  const [timelap, setTimeLap] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLap(false);
+    }, 100);
+  });
+
   return (
     <Stack>
       <Typography
@@ -14,11 +23,9 @@ function ReactCalendarComp() {
           lineHeight: "28px",
         }}
       >
-        Calendar
+      Calendar 
       </Typography>
-      <Stack>
-        <ReactCalendar />
-      </Stack>
+      <Stack>{timelap ? <CalendarSkeleton /> : <ReactCalendar />}</Stack>
     </Stack>
   );
 }
