@@ -5,6 +5,8 @@ import {
   Typography,
   List,
   ListItem,
+  ListItemIcon,
+  Radio,
   Button,
   Menu,
   MenuItem,
@@ -18,15 +20,18 @@ import palette from "../../../../theme/palette";
 function RecentAssessments({ recent_assessments }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState("Web Technologies");
+  const [rotationAngle, setRotationAngle] = useState(0);
 
   //handling subjects dropdown
   const handleSubjectsDropdown = (event) => {
     setAnchorEl(event.currentTarget);
+    setRotationAngle(180);
   };
 
   const handleClose = (subject) => {
     setSelectedSubject(subject);
     setAnchorEl(null);
+    setRotationAngle(0);
   };
 
   return (
@@ -94,7 +99,12 @@ function RecentAssessments({ recent_assessments }) {
                 </Button>
                 <KeyboardArrowDownIcon
                   onClick={handleSubjectsDropdown}
-                  sx={{cursor : 'pointer', color : palette.grey[400]}}
+                  sx={{
+                    cursor: "pointer",
+                    color: palette.grey[400],
+                    transform: `rotate(${rotationAngle}deg)`,
+                    transition: "transform 0.3s",
+                  }}
                 />
               </ListItem>
             </List>
@@ -112,8 +122,15 @@ function RecentAssessments({ recent_assessments }) {
               }}
             >
               {recent_assessments?.subjects.map((subject, index) => (
-                <MenuItem key={index} onClick={() => handleClose(subject.name)}>
-                  {subject.name}
+                <MenuItem
+                  key={index}
+                  onClick={() => handleClose(subject.name)}
+                  sx={{ padding: 0 }}
+                >
+                  <ListItemIcon>
+                    <Radio checked={subject.name === selectedSubject} />
+                  </ListItemIcon>
+                  <Typography variant="body1">{subject.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
