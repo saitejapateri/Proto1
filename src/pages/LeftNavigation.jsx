@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Stack, Box } from "@mui/material";
 import palette from "../theme/palette";
 import edwiselyLogo from "../images/edwisely.svg";
@@ -7,11 +7,12 @@ import courseImg from "../images/courseimg.svg";
 import logoutImg from "../images/logout.svg";
 import courseActiveImg from '../images/courseActive.svg';
 import dashboardNull from "../images/dashboardNULL.svg";
+import dashboardHoverImg from "../images/dashboardHover.svg"
 import { useLocation, useNavigate} from "react-router-dom";
 
 function LeftNavigation() {
 
-
+  const [hovered,setHovered] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -71,12 +72,14 @@ function LeftNavigation() {
             bgcolor={
               location.pathname === "/dashboard" ? palette.primary[200] : ""
             }
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           >
             <img
               src={
                 location.pathname === "/dashboard"
-                  ? dashboardImg
-                  : dashboardNull
+                  ? (hovered ? dashboardHoverImg : dashboardImg)
+                  : (hovered ? dashboardHoverImg : dashboardNull)
               }
               width="24px"
               height="24px"
