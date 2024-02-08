@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Stack } from "@mui/material";
-import ReactCalendar from "./ReactCalendar/ReactCalendar";
+import ReactCalendar from "../../../components/common/ReactCalendar/ReactCalendar";
 
 function ReactCalendarComp() {
   return (

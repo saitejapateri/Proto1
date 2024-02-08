@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import MuiColumnChart from "../../../components/common/MuiColumnChart.jsx";
-import RecentAssessmentSkeleton from "./RecentAssessmentSkeleton.jsx";
-import palette from "../../../theme/palette";
+import MuiColumnChart from "../../../../components/common/MuiColumnChart";
+import RecentAssessmentSkeleton from "./RecentAssessmentSkeleton";
+import palette from "../../../../theme/palette";
 
 function RecentAssessments({ recent_assessments }) {
   const [anchorEl, setAnchorEl] = useState(null);

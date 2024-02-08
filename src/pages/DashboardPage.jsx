@@ -1,16 +1,20 @@
-import React, { useEffect, useState, Fragment} from "react";
-import {useDispatch} from 'react-redux'
+import React, { useEffect, useState, Fragment } from "react";
+import { useDispatch } from "react-redux";
 import palette from "../theme/palette";
 import { Grid, Box, Typography } from "@mui/material";
-import AssessmentDetailsSkeleton from "../features/Dashboard/AssessmentDetailsSkeletion";
+import MuiCustomAssessmentDetailsSkeleton from "../components/common/MuiCustomAssessmentDetailsSkeleton";
 import AssessmentDetailCard from "../components/common/AssessmentDetailCard";
-import RecentAssessments from "../features/Dashboard/RecentAssessments/RecentAssessments.jsx";
+import RecentAssessmentSkeleton from "../components/common/RecentAssessmentSkeleton";
+import RecentAssessments from "../features/Dashboard/common/RecentAssessments/RecentAssessments";
+import MuiCustomAssessmentSkeleton from "../components/common/MuiCustomAssessmentSkeleton";
 import MuiCustomTableWithSortandSelect from "../components/common/MuiCustomTableWithSortandSelect";
-import ProfileCard from "../features/Dashboard/ProfileCard";
-import ReactCalendarComp from "../features/Dashboard/ReactCalendarComp";
+import MuiCustomProfileCard from "../components/common/MuiCustomProfileCard";
+import ReactCalendarComp from "../features/Dashboard/common/ReactCalendarComp";
 import LeaderBoardCard from "../components/common/LeaderBoardCard";
-import MuiLeaderboardDrawar from "../features/Dashboard/MuiLeaderboardDrawar";
-import Courses from "../features/Dashboard/Courses.jsx";
+import MuiLeaderboardDrawar from "../components/common/MuiLeaderboardDrawar";
+import Courses from "../features/Dashboard/common/Courses.jsx";
+import ReactErrorBoundary from "../components/common/ReactErrorBoundary";
+import ErrorPage from "../components/common/ErrorPage";
 import { profileActions } from "../store";
 
 function DashboardPage() {
@@ -42,12 +46,14 @@ function DashboardPage() {
         setData(dashboardData);
         setAssessmentData(assessmentsDetails);
         setAssessments(assessmentsDetails.assessments);
-        
-        dispatch(profileActions.updateProfile({
-          name : dashboardData.name,
-          email : dashboardData.email,
-          profileImg : dashboardData.profile_picture
-        }))
+
+        dispatch(
+          profileActions.updateProfile({
+            name: dashboardData.name,
+            email: dashboardData.email,
+            profileImg: dashboardData.profile_picture,
+          })
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -59,15 +65,19 @@ function DashboardPage() {
   console.log(data);
   const analyticsData = data.analytics;
 
-  const [assessments,setAssessments] = useState(assessmentData.assessments || []);
-  
+  const [assessments, setAssessments] = useState(
+    assessmentData.assessments || []
+  );
+
   const sortHandler = (order, index) => {
     const sortedAssessmentsData = [...assessments];
-    sortedAssessmentsData.sort((a,b) => {
-      return order === 'asc' ? a.percentage_scored - b.percentage_scored :  b.percentage_scored - a.percentage_scored;
-    })
+    sortedAssessmentsData.sort((a, b) => {
+      return order === "asc"
+        ? a.percentage_scored - b.percentage_scored
+        : b.percentage_scored - a.percentage_scored;
+    });
     setAssessments(sortedAssessmentsData);
-  }
+  };
 
   return (
     <>
@@ -94,7 +104,7 @@ function DashboardPage() {
           }}
         >
           {!analyticsData ? (
-            <AssessmentDetailsSkeleton />
+            <MuiCustomAssessmentDetailsSkeleton />
           ) : (
             <>
               {Object.keys(analyticsData).map((analytics, index) => (
@@ -122,21 +132,48 @@ function DashboardPage() {
             container
             item
             md={8.37}
-            sx={{display : 'flex', flexDirection : 'column'}}
+            sx={{ display: "flex", flexDirection: "column" }}
           >
             <Grid
               item
               md
-              sx={{border : `1px solid ${palette.grey[100]}`, borderRadius : '10px', height : '352px', marginBottom : '1.31rem'}}
+              sx={{
+                border: `1px solid ${palette.grey[100]}`,
+                borderRadius: "10px",
+                height: "352px",
+                marginBottom: "1.31rem",
+              }}
             >
-              <RecentAssessments recent_assessments={data.recent_assessments} />
+              {!data ? (
+                <RecentAssessmentSkeleton />
+              ) : (
+                <RecentAssessments
+                  recent_assessments={data.recent_assessments}
+                />
+              )}
             </Grid>
             <Grid
               item
               md
-              sx={{height : '535px',border : `1px solid ${palette.grey[100]}`, borderRadius : '10px'}}
+              sx={{
+                height: "535px",
+                border: `1px solid ${palette.grey[100]}`,
+                borderRadius: "10px",
+              }}
             >
-              <MuiCustomTableWithSortandSelect assessments={assessments} sortHandler={sortHandler} />
+              {assessments === [] ? (
+                <MuiCustomAssessmentSkeleton />
+              ) : (
+                <>
+                  <ReactErrorBoundary error={<ErrorPage />}>
+                    <MuiCustomTableWithSortandSelect
+                      assessments={assessments}
+                      sortHandler={sortHandler}
+                      status={assessmentData.status}
+                    />
+                  </ReactErrorBoundary>
+                </>
+              )}
             </Grid>
           </Grid>
 
@@ -148,7 +185,7 @@ function DashboardPage() {
             style={{ display: "flex", flexDirection: "column" }}
           >
             <Grid md item sx={{ marginBottom: "30px" }}>
-              <ProfileCard
+              <MuiCustomProfileCard
                 name={data.name}
                 profilePic={data.profile_picture}
                 email={data.email}
@@ -161,19 +198,20 @@ function DashboardPage() {
               <LeaderBoardCard data={data.leaderboard} onClick={handleDrawar} />
             </Grid>
           </Grid>
-
         </Grid>
-
 
         {/* course grid */}
         <Grid
           item
           md
-          sx={{ marginLeft: "1.25rem", marginTop: "1.25rem", marginBottom: "55px"}}
+          sx={{
+            marginLeft: "1.25rem",
+            marginTop: "1.25rem",
+            marginBottom: "55px",
+          }}
         >
           <Courses courses={data.courses} />
         </Grid>
-
 
         <MuiLeaderboardDrawar
           data={data.leaderboard}

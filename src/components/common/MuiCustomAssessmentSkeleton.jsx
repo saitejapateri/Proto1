@@ -10,7 +10,7 @@ const skeletonStyle = {
   marginRight : '10px'
 };
 
-function AssessmentSkeleton() {
+function MuiCustomAssessmentSkeleton() {
   return (
     <Box sx={{ width: "100%" }}>
       <Skeleton width={200} sx={skeletonStyle} />
@@ -28,4 +28,4 @@ function AssessmentSkeleton() {
   );
 }
 
-export default AssessmentSkeleton;
+export default MuiCustomAssessmentSkeleton;

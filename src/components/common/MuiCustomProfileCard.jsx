@@ -2,7 +2,7 @@ import React from "react";
 import { Stack, Box, Typography } from "@mui/material";
 import palette from "../../theme/palette";
 
-function ProfileCard({ name, profilePic, email }) {
+function MuiCustomProfileCard({ name, profilePic, email }) {
   return (
     <Stack direction="column">
       <Typography
@@ -57,4 +57,4 @@ function ProfileCard({ name, profilePic, email }) {
   );
 }
 
-export default ProfileCard;
+export default MuiCustomProfileCard;
