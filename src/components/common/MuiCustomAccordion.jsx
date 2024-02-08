@@ -20,13 +20,15 @@ function MuiCustomAccordion({ index, topic_name, materials }) {
       sx={{ boxShadow: "none", backgroundColor: palette.primary[0] }}
     >
       <AccordionSummary sx={{ padding: 0 }}>
-        {topic_name}
-        <KeyboardArrowDownOutlinedIcon />
+        <Typography variant='subtitle2' sx={{color : palette.grey[400]}}>
+          {topic_name}
+        </Typography>
+        <KeyboardArrowDownOutlinedIcon sx={{color : palette.grey[400]}} />
       </AccordionSummary>
       {materials.map((material) => (
         <AccordionDetails
           key={material.id}
-          sx={{ padding: "0.2rem", alignItems: "center" }}
+          sx={{ padding: "0.2rem", alignItems: "center", display : 'flex', justifyContent : 'space-between'}}
         >
           <Stack
             direction={"row"}

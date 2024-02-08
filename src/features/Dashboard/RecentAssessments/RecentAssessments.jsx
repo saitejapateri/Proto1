@@ -94,7 +94,7 @@ function RecentAssessments({ recent_assessments }) {
                 </Button>
                 <KeyboardArrowDownIcon
                   onClick={handleSubjectsDropdown}
-                  color={palette.grey[400]}
+                  sx={{cursor : 'pointer', color : palette.grey[400]}}
                 />
               </ListItem>
             </List>

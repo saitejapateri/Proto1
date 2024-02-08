@@ -41,7 +41,8 @@ function DashboardPage() {
 
         setData(dashboardData);
         setAssessmentData(assessmentsDetails);
-
+        setAssessments(assessmentsDetails.assessments);
+        
         dispatch(profileActions.updateProfile({
           name : dashboardData.name,
           email : dashboardData.email,
@@ -57,6 +58,16 @@ function DashboardPage() {
 
   console.log(data);
   const analyticsData = data.analytics;
+
+  const [assessments,setAssessments] = useState(assessmentData.assessments || []);
+  
+  const sortHandler = (order, index) => {
+    const sortedAssessmentsData = [...assessments];
+    sortedAssessmentsData.sort((a,b) => {
+      return order === 'asc' ? a.percentage_scored - b.percentage_scored :  b.percentage_scored - a.percentage_scored;
+    })
+    setAssessments(sortedAssessmentsData);
+  }
 
   return (
     <>
@@ -125,7 +136,7 @@ function DashboardPage() {
               md
               sx={{height : '535px',border : `1px solid ${palette.grey[100]}`, borderRadius : '10px'}}
             >
-              <MuiCustomTableWithSortandSelect data={assessmentData} />
+              <MuiCustomTableWithSortandSelect assessments={assessments} sortHandler={sortHandler} />
             </Grid>
           </Grid>
 
