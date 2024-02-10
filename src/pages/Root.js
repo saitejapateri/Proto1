@@ -1,11 +1,16 @@
 import React from "react";
+import {useSelector} from 'react-redux'
 import LeftNavigation from "./LeftNavigation.jsx";
 import { Outlet, useLocation } from "react-router-dom";
 import { Grid, Stack } from "@mui/material";
 import TopNavigation from "./TopNavigation.jsx";
+import MuiCustomPdfModal from "../components/common/MuiCustomPdfModal"
 import palette from "../theme/palette.js";
 
 function Root() {
+
+  const {isOpen,pdfUrl} = useSelector(state => state.pdf);
+
   const isLogin = localStorage.getItem("isLogin");
   const path = useLocation();
   const loginPage = path.pathname === "/" ? true : false;
@@ -33,6 +38,7 @@ function Root() {
       {isLoginPage && <Stack><LeftNavigation /></Stack>}
       <Stack sx={{width : '100%'}}>
         {isLoginPage && <TopNavigation />}
+        {/* {isOpen ? <Outlet /> : <Outlet />} */}
         <Outlet />
       </Stack>
     </Stack>

@@ -5,13 +5,12 @@ import MuiCustomAccordion from "../../../components/common/MuiCustomAccordion";
 
 function AccordionsContainer({ topics }) {
 
-    console.log(topics)
     const selectedUnit = useSelector(state => state.unit.selectedUnitId);
 
   return (
     <Grid
       item
-      md={5}
+      md={4}
       sx={{ marginLeft: "3.5rem", marginTop: "1.5rem" }}
     >
         {

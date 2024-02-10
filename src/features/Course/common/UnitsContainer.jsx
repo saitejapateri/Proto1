@@ -9,7 +9,6 @@ import palette from "../../../theme/palette.js";
 function UnitsContainer({ units }) {
   const dispatch = useDispatch();
   const selectedUnit = useSelector((state) => state.unit.selectedUnitId);
-  console.log(selectedUnit);
 
   const handleTab = (event, newValue) => {
     console.log(newValue);

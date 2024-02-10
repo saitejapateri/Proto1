@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Card, Typography } from "@mui/material";
 import MuiCustomCourseCard from "../../../components/common/MuiCustomCourseCard";
-import CourseSkeleton from "../../../components/CourseSkeleton.jsx";
+import CourseSkeleton from "../../../components/common/CalendarSkeleton";
 import typography from "../../../theme/typography";
 
 function Courses({ courses }) {
