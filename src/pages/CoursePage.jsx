@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import { Grid } from "@mui/material";
 import palette from "../theme/palette.js";
-import CourseDetails from "../features/Course/common/CourseDetails.jsx";
-import MuiCustomCoursePageSkeleton from "../features/Course/common/MuiCustomCoursePageSkeleton.jsx";
-import CourseDescription from "../features/Course/common/CourseDescription.jsx";
-import ContinueReading from "../features/Course/common/ContinueReading.jsx";
-import UnitsContainer from "../features/Course/common/UnitsContainer.jsx";
-import AccordionsContainer from "../features/Course/common/AccordionsContainer.jsx";
+import CourseDetails from "../features/Course/components/CourseDetails.jsx";
+import MuiCustomCoursePageSkeleton from "../features/Course/components/MuiCustomCoursePageSkeleton.jsx";
+import CourseDescription from "../features/Course/components/CourseDescription.jsx";
+import ContinueReading from "../features/Course/components/ContinueReading.jsx";
+import UnitsContainer from "../features/Course/components/UnitsContainer.jsx";
+import AccordionsContainer from "../features/Course/components/AccordionsContainer.jsx";
 
 function CoursePage() {
   const { courseId } = useParams();

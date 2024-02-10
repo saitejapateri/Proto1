@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import { Stack, Box } from "@mui/material";
-import palette from "../theme/palette";
-import edwiselyLogo from "../images/edwisely.svg";
-import dashboardImg from "../images/dashboardimg.svg";
-import courseImg from "../images/courseimg.svg";
-import logoutImg from "../images/logout.svg";
-import courseActiveImg from '../images/courseActive.svg';
-import dashboardNull from "../images/dashboardNULL.svg";
-import dashboardHoverImg from "../images/dashboardHover.svg"
+import palette from "../../theme/palette.js";
+import edwiselyLogo from "../../images/edwisely.svg";
+import dashboardImg from "../../images/dashboardimg.svg";
+import courseImg from "../../images/courseimg.svg";
+import logoutImg from "../../images/logout.svg";
+import courseActiveImg from '../../images/courseActive.svg';
+import dashboardNull from "../../images/dashboardNULL.svg";
+import dashboardHoverImg from "../../images/dashboardHover.svg"
 import { useLocation, useNavigate} from "react-router-dom";
 
 function LeftNavigation() {

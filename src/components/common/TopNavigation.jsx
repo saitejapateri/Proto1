@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {useSelector} from 'react-redux';
 import { Stack, Box, Typography } from "@mui/material";
-import MuiCustomProfileMenu from "../components/common/MuiCustomProfileMenu";
-import palette from "../theme/palette";
+import MuiCustomProfileMenu from "./MuiCustomProfileMenu";
+import palette from "../../theme/palette.js"
 
 function TopNavigation() {
 

@@ -1,9 +1,9 @@
 import React from "react";
 import {useSelector} from 'react-redux'
-import LeftNavigation from "./LeftNavigation.jsx";
+import LeftNavigation from "../components/common/LeftNavigation";
 import { Outlet, useLocation } from "react-router-dom";
 import { Grid, Stack } from "@mui/material";
-import TopNavigation from "./TopNavigation.jsx";
+import TopNavigation from "../components/common/TopNavigation";
 import MuiCustomPdfModal from "../components/common/MuiCustomPdfModal"
 import palette from "../theme/palette.js";
 
