@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Login from './components/common/Login';
-import Root from './pages/Root';
+import Root from './Root';
 import DashboardPage from './pages/DashboardPage.jsx';
 import CoursePage from './pages/CoursePage'
 import Pdf from './components/common/Pdf';
