@@ -28,8 +28,15 @@ function RecentAssessments({ recent_assessments }) {
     setRotationAngle(180);
   };
 
-  const handleClose = (subject) => {
-    setSelectedSubject(subject);
+  //handle null close
+  const handleClose = () => {
+    setAnchorEl(null);
+    setRotationAngle(0);
+  }
+
+  //handling subject close
+  const handleCloseSubject = (event) => {
+    setSelectedSubject(event ? event : selectedSubject);
     setAnchorEl(null);
     setRotationAngle(0);
   };
@@ -124,11 +131,11 @@ function RecentAssessments({ recent_assessments }) {
               {recent_assessments?.subjects.map((subject, index) => (
                 <MenuItem
                   key={index}
-                  onClick={() => handleClose(subject.name)}
-                  sx={{ padding: 0 }}
+                  onClick={() => handleCloseSubject(subject.name)}
+                  sx={{ padding : '0 0.843rem' }}
                 >
                   <ListItemIcon>
-                    <Radio checked={subject.name === selectedSubject} />
+                    <Radio checked={subject.name === selectedSubject} sx={{color : palette.common.black}}/>
                   </ListItemIcon>
                   <Typography variant="body1">{subject.name}</Typography>
                 </MenuItem>

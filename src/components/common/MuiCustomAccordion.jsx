@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
 import {
   Accordion,
   AccordionDetails,
@@ -11,8 +13,24 @@ import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import documentImg from "../../images/document.svg";
 import palette from "../../theme/palette";
+import {pdfActions} from '../../store/index.js'
 
 function MuiCustomAccordion({ index, topic_name, materials }) {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handlePdfClick = (url,name) => {
+    dispatch(pdfActions.setPdf({
+      isOpen : true,
+      pdfUrl : url,
+      pdfName : name
+    }))
+    navigate(`/pdf`);
+    window.scrollTo(0,0);
+  }
+
+
   return (
     <Accordion
       square
@@ -38,7 +56,7 @@ function MuiCustomAccordion({ index, topic_name, materials }) {
             <img src={documentImg} alt="" width="16px" height="16px" />
             {material.name}
           </Stack>
-          <Button variant="text" endIcon={<ArrowForwardOutlinedIcon />}>
+          <Button variant="text" endIcon={<ArrowForwardOutlinedIcon />} onClick={()=>handlePdfClick(material.url,material.name)}>
             <Typography variant="button" sx={{ fontWeight: "400" }}>
               Start
             </Typography>

@@ -4,6 +4,7 @@ import { Box, Stack, Typography, Divider, Grid } from "@mui/material";
 import { useState } from "react";
 import { Document, Page, Thumbnail, pdfjs } from "react-pdf";
 import { useSelector } from "react-redux";
+import './Pdf.css'
 import PdfHeader from "./PdfHeader";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
