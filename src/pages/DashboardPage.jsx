@@ -13,8 +13,6 @@ import ReactCalendarComp from "../features/Dashboard/components/ReactCalendarCom
 import LeaderBoardCard from "../components/common/LeaderBoardCard";
 import MuiLeaderboardDrawar from "../components/common/MuiLeaderboardDrawar";
 import Courses from "../features/Dashboard/components/Courses.jsx";
-import ReactErrorBoundary from "../components/common/ReactErrorBoundary";
-import ErrorPage from "../components/common/ErrorPage";
 import { profileActions } from "../store";
 
 function DashboardPage() {
@@ -165,13 +163,11 @@ function DashboardPage() {
                 <MuiCustomAssessmentSkeleton />
               ) : (
                 <>
-                  <ReactErrorBoundary error={<ErrorPage />}>
                     <MuiCustomTableWithSortandSelect
                       assessments={assessments}
                       sortHandler={sortHandler}
                       status={assessmentData.status}
                     />
-                  </ReactErrorBoundary>
                 </>
               )}
             </Grid>
@@ -182,7 +178,7 @@ function DashboardPage() {
             container
             item
             md={2.99}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: "flex", flexDirection: "column"}}
           >
             <Grid md item sx={{ marginBottom: "30px" }}>
               <MuiCustomProfileCard

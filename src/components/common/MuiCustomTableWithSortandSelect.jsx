@@ -16,6 +16,7 @@ import MuiCustomStudentTableRow from "./MuiCustomStudentTableRow";
 import palette from "../../theme/palette";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import AssessmentErrorPage from "../../features/Course/components/AssessmentErrorPage";
 
 const HeaderArr = [
   { label: "Subject", isSortable: false, isSelectable: false },
@@ -88,49 +89,57 @@ const MuiCustomTableWithSortandSelect = (props) => {
             <KeyboardArrowRightIcon onClick={() => handleSemester("right")} />
           </Stack>
         </Stack>
-          <Table sx={{ width: "100%" }} aria-label="sticky table">
-            <TableHead
-              sx={{
-                // position: "",
-                // top: "162px",
-                zIndex: 100,
-                // background: "white",
-              }}
-            >
-              <MuiCustomTableHeaderRowWithSortandSelect
-                headerArray={HeaderArr}
-                sortHandler={sortHandler}
-                selectHandler={selectHandler}
-              />
-            </TableHead>
-            <TableBody>
-              {filteredAssessments
-                ?.slice(startingIndex, startingIndex + 8)
-                .map((stu, i) => (
-                  <MuiCustomStudentTableRow
-                    key={i}
-                    stu={stu}
-                    viewStudentResult={viewStudentResult}
-                  />
-                ))}
-            </TableBody>
-          </Table>
+        {status === 200 ? (
+          <>
+            <Table sx={{ width: "100%" }} aria-label="sticky table">
+              <TableHead
+                sx={{
+                  // position: "",
+                  // top: "162px",
+                  zIndex: 100,
+                  // background: "white",
+                }}
+              >
+                <MuiCustomTableHeaderRowWithSortandSelect
+                  headerArray={HeaderArr}
+                  sortHandler={sortHandler}
+                  selectHandler={selectHandler}
+                />
+              </TableHead>
+              <TableBody>
+                {filteredAssessments
+                  ?.slice(startingIndex, startingIndex + 8)
+                  .map((stu, i) => (
+                    <MuiCustomStudentTableRow
+                      key={i}
+                      stu={stu}
+                      viewStudentResult={viewStudentResult}
+                    />
+                  ))}
+              </TableBody>
+            </Table>{" "}
+          </>
+        ) : (
+          <AssessmentErrorPage />
+        )}
       </Paper>
 
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        // sx={{ marginTop: "1rem" }}
-      >
-        <Pagination
-          count={Math.ceil(filteredAssessments?.length / 8)}
-          page={currentPageforTablepaginaton}
-          onChange={tablePaginationHandler}
-          color="primary"
-          sx={{ fontFamily: "Poppins", fontWeight: "300", fontSize: "12px" }}
-        />
-      </Stack>
+      {status === 200 && (
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          // sx={{ marginTop: "1rem" }}
+        >
+          <Pagination
+            count={Math.ceil(filteredAssessments?.length / 8)}
+            page={currentPageforTablepaginaton}
+            onChange={tablePaginationHandler}
+            color="primary"
+            sx={{ fontFamily: "Poppins", fontWeight: "300", fontSize: "12px" }}
+          />
+        </Stack>
+      )}
     </>
   );
 };

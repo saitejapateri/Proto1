@@ -13,9 +13,13 @@ import AccordionsContainer from "../features/Course/components/AccordionsContain
 function CoursePage() {
   const { courseId } = useParams();
   const [courseData, setCourseData] = useState(null);
+  const [selectedTopic,setSelectedTopic] = useState('');
   console.log(courseData);
 
   const selectedUnit = useSelector(state => state.unit.selectedUnitId);
+  const handleSearch = (event) => {
+    setSelectedTopic(event.target.value);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,10 +59,10 @@ function CoursePage() {
           <ContinueReading continue_reading={courseData.data.continue_reading} />
 
           {/* UnitsContainer */}
-          <UnitsContainer units={courseData.data.units} />
+          <UnitsContainer units={courseData.data.units} value={selectedTopic} handleSearch={handleSearch} />
 
           {/* Accordions */}
-          <AccordionsContainer topics={courseData.data.units[selectedUnit].topics} />
+          <AccordionsContainer topics={courseData.data.units[selectedUnit].topics} selectedTopic={selectedTopic} />
 
 
         </>

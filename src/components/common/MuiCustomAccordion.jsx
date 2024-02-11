@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Accordion,
   AccordionDetails,
@@ -13,40 +13,46 @@ import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import documentImg from "../../images/document.svg";
 import palette from "../../theme/palette";
-import {pdfActions} from '../../store/index.js'
+import { pdfActions } from "../../store/index.js";
 
-function MuiCustomAccordion({ index, topic_name, materials }) {
-
+function MuiCustomAccordion({ index, topic_name, materials, expanded, onChange }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handlePdfClick = (url,name) => {
-    dispatch(pdfActions.setPdf({
-      isOpen : true,
-      pdfUrl : url,
-      pdfName : name
-    }))
+  const handlePdfClick = (url, name) => {
+    dispatch(
+      pdfActions.setPdf({
+        isOpen: true,
+        pdfUrl: url,
+        pdfName: name,
+      })
+    );
     navigate(`/pdf`);
-    window.scrollTo(0,0);
-  }
-
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Accordion
       square
-      defaultExpanded={index === 0}
+      expanded={expanded}
+      onChange={onChange}
       sx={{ boxShadow: "none", backgroundColor: palette.primary[0] }}
     >
       <AccordionSummary sx={{ padding: 0 }}>
-        <Typography variant='subtitle2' sx={{color : palette.grey[400]}}>
+        <Typography variant="subtitle2" sx={{ color: palette.grey[400] }}>
           {topic_name}
         </Typography>
-        <KeyboardArrowDownOutlinedIcon sx={{color : palette.grey[400]}} />
+        <KeyboardArrowDownOutlinedIcon sx={{ color: palette.grey[400] }} />
       </AccordionSummary>
       {materials.map((material) => (
         <AccordionDetails
           key={material.id}
-          sx={{ padding: "0.2rem", alignItems: "center", display : 'flex', justifyContent : 'space-between'}}
+          sx={{
+            padding: "0.2rem",
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
           <Stack
             direction={"row"}
@@ -56,7 +62,11 @@ function MuiCustomAccordion({ index, topic_name, materials }) {
             <img src={documentImg} alt="" width="16px" height="16px" />
             {material.name}
           </Stack>
-          <Button variant="text" endIcon={<ArrowForwardOutlinedIcon />} onClick={()=>handlePdfClick(material.url,material.name)}>
+          <Button
+            variant="text"
+            endIcon={<ArrowForwardOutlinedIcon />}
+            onClick={() => handlePdfClick(material.url, material.name)}
+          >
             <Typography variant="button" sx={{ fontWeight: "400" }}>
               Start
             </Typography>
