@@ -2,6 +2,7 @@ import React from 'react'
 import { TableRow } from '@mui/material'
 import { useTheme } from '@mui/styles'
 import MuiCustomTableHeaderCellWithSortandSelect from './MuiCustomTableHeaderCellWithSortandSelect'
+import palette from '../../theme/palette'
 
 const MuiCustomTableHeaderRowWithSortandSelect = ({
   headerArray,
@@ -13,8 +14,15 @@ const MuiCustomTableHeaderRowWithSortandSelect = ({
     <TableRow
       sx={{
         background: theme.palette.grey[100],
-        borderRadius: '5px',
         height: '30px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: '100%',
+        color: palette.grey[100],
+        padding: '0px',
+        margin: '0px',
+        borderRadius: '10px',
       }}
     >
       {headerArray?.map((header, i) => {

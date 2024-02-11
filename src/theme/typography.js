@@ -25,25 +25,29 @@ export function remToPx(value) {
   // ----------------------------------------------------------------------
   const lineHeightRatio = 80 / 64;
   const FONT_PRIMARY = [
-    'Axiforma-Book',
-    'Axiforma-Medium',
-    'Axiforma-SemiBold',
-    'Arial',
+    'Poppins',
+    // 'Axiforma-Book',
+    // 'Axiforma-Medium',
+    // 'Axiforma-SemiBold',
+    // 'Arial',
     'sans-serif',
   ].join(',');
   const FONT_PRIMARY_REGULAR = [
-      'Axiforma-Book',
-      'Arial',
+      'Poppins',
+      // 'Axiforma-Book',
+      // 'Arial',
       'sans-serif',
     ].join(',');
     const FONT_PRIMARY_MEDIUM = [
-      'Axiforma-Medium',
-      'Arial',
+      'Poppins',
+      // 'Axiforma-Medium',
+      // 'Arial',
       'sans-serif',
     ].join(',');
     const FONT_PRIMARY_BOLD = [
-      'Axiforma-SemiBold',
-      'Arial',
+      'Poppins',
+      // 'Axiforma-SemiBold',
+      // 'Arial',
       'sans-serif',
     ].join(',');
   // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font

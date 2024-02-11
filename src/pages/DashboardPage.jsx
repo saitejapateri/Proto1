@@ -86,6 +86,7 @@ function DashboardPage() {
           marginTop: "12px",
           marginBottom: "20px",
         }}
+        color="rgba(46, 58, 89, 1)"
       >
         Dashboard
       </Typography>

@@ -91,13 +91,28 @@ const MuiCustomTableWithSortandSelect = (props) => {
         </Stack>
         {status === 200 ? (
           <>
-            <Table sx={{ width: "100%" }} aria-label="sticky table">
+            <Table
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+                margin: "0px",
+                padding: "0px",
+                width: "100%",
+              }}
+              aria-label="sticky table"
+            >
               <TableHead
                 sx={{
                   // position: "",
                   // top: "162px",
                   zIndex: 100,
                   // background: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                  width: "100%",
                 }}
               >
                 <MuiCustomTableHeaderRowWithSortandSelect
@@ -106,7 +121,14 @@ const MuiCustomTableWithSortandSelect = (props) => {
                   selectHandler={selectHandler}
                 />
               </TableHead>
-              <TableBody>
+              <TableBody
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                  width: "100%",
+                }}
+              >
                 {filteredAssessments
                   ?.slice(startingIndex, startingIndex + 8)
                   .map((stu, i) => (

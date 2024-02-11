@@ -31,7 +31,7 @@ const AssessmentDetailCard = ({
       sx={{
         height: {
           sm: "80px", // Height for small screens
-          md: "60px", // Height for medium screens
+          md: "80px", // Height for medium screens
           lg: "80px", // Height for large screens
           xl: "80px",
         },

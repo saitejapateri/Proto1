@@ -32,6 +32,30 @@ const commonStyles = {
   fontSize : '14px'
 }
 
+const dataStyling = {
+  textAlign: 'start',
+  // fontFamily: poppinsFont.fontFamily,
+  fontSize: {
+    // md: pxToRem(10),
+    // lg: pxToRem(14)
+  },
+  fontWeight: 400,
+  fontStyle: 'normal',
+  lineHeight: 'normal',
+  textTransform: 'capitalize',
+}
+
+const tableCellStylings = {
+  // padding: '0px',
+  // margin: '0px',
+  height: '50px',
+  minWidth: {
+    md: '60px',
+    lg: '100px',
+    xl : '150px'
+  },
+}
+
 const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
   const theme = useTheme();
   // const { currentSectionTab } = useSelector((state) => state.assessment)
@@ -55,24 +79,25 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
       key={key}
       sx={{
         cursor: "pointer",
-        // display : 'flex',
-        // flexDirection : 'row',
-        // justifyContent : 'space-evenly',
+        // height : '30px',
+        display : 'flex',
+        flexDirection : 'row',
+        justifyContent : 'space-evenly',
         background:
-          stu.submission_type === "not attempted"
-            ? theme.palette.error[200]
+          stu.submission_type === 2
+            ? theme.palette.warning[200]
             : "",
         "&:hover": {
           background:
-            stu.submission_type === "Timeout"
-              ? theme.palette.error[300]
+            stu.submission_type === 2
+              ? theme.palette.warning[300]
               : theme.palette.grey[100], // Set your desired background color
         }
       }}
     >
       <TableCell
         scope="row"
-        sx={{ border: "none", borderRadius: "6px 0 0 6px"}}
+        sx={{ border: "none", borderRadius: "6px 0 0 6px", ...tableCellStylings}}
       >
         <Typography
           variant="body1"
@@ -84,12 +109,12 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
           {stu.subject}
         </Typography>
       </TableCell>
-      <TableCell scope="row" sx={{ border: "none" }}>
+      <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
         <Typography variant="body1" sx={{ ...commonStyles,color: theme.palette.grey[900] }}>
           {stu.total_timespent===null ? 0 : stu.total_timespent}Min
         </Typography>
       </TableCell>
-      <TableCell scope="row" sx={{ border: "none" }}>
+      <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
         <Typography
           variant="body1"
           sx={{
@@ -116,12 +141,12 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
         </Typography>
       </TableCell>
       <TableCell scope="row" sx={{ border: "none" }}>
-        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900] }}>
+        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], paddingLeft : '50%'}}>
           {getInternetQuality(stu.internet_speed)}
         </Typography>
       </TableCell>
-      <TableCell scope="row" sx={{ border: "none" }}>
-        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900] }}>
+      <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
+        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], paddingLeft : '90%'}}>
           {stu.semester}
         </Typography>
       </TableCell>
@@ -137,14 +162,14 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
       </TableCell> */}
       <TableCell
         scope="row"
-        sx={{ border: "none", borderRadius: "0 6px 6px 0" }}
+        sx={{ border: "none", borderRadius: "0 6px 6px 0", ...tableCellStylings}}
       >
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900] }}>
+          <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], ...tableCellStylings, paddingLeft : '50%'}}>
             {stu.percentage_scored === null ? 0 : stu.percentage_scored}%
           </Typography>
           {/* <IconButton
