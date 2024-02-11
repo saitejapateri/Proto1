@@ -7,7 +7,6 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import presentationLogo from '../../images/presentation.svg'
 import Rotate90DegreesCcwIcon from "@mui/icons-material/Rotate90DegreesCcw";
-import ReactPdf from './ReactPdf'
 
 const style = {
   position: "absolute",
@@ -72,7 +71,6 @@ function MuiCustomPdfModal() {
             </Stack>
           </Stack>
         </Box>
-        <ReactPdf />
       </Box>
     </Modal>
   );

@@ -4,8 +4,11 @@ import { Box, Stack, Typography, Divider, Grid } from "@mui/material";
 import { useState } from "react";
 import { Document, Page, Thumbnail, pdfjs } from "react-pdf";
 import { useSelector } from "react-redux";
-import './Pdf.css'
 import PdfHeader from "./PdfHeader";
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+import './Pdf.css'
+import palette from "../../theme/palette";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const options = {
@@ -64,9 +67,7 @@ function Pdf() {
 
       {/* pdf */}
       <Box
-        sx={{
-          padding: "10px",
-        }}
+      sx={{marginTop : '1.31rem'}}
       >
         <Document
           className="document"
@@ -75,12 +76,14 @@ function Pdf() {
           onLoadSuccess={onDocumentLoadSuccess}
           style={{ display: "flex" }}
         >
-          <Page className="page" pageNumber={pageNumber} scale={scale} rotate={rotationAngle} />
+        <Page className="page" pageNumber={pageNumber} scale={scale} rotate={rotationAngle}
+         />
           <Stack
             sx={{
               overflowY: "auto",
               maxHeight: "520px",
               marginTop: "2rem",
+              marginLeft : '20%',
               "&::-webkit-scrollbar": {
                 display: "none",
               },
