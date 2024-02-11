@@ -86,7 +86,7 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
       </TableCell>
       <TableCell scope="row" sx={{ border: "none" }}>
         <Typography variant="body1" sx={{ ...commonStyles,color: theme.palette.grey[900] }}>
-          {stu.total_timespent}Min
+          {stu.total_timespent===null ? 0 : stu.total_timespent}Min
         </Typography>
       </TableCell>
       <TableCell scope="row" sx={{ border: "none" }}>
@@ -145,7 +145,7 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
           alignItems="center"
         >
           <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900] }}>
-            {stu.percentage_scored}%
+            {stu.percentage_scored === null ? 0 : stu.percentage_scored}%
           </Typography>
           {/* <IconButton
             aria-label='delete'

@@ -23,7 +23,7 @@ const HeaderArr = [
   { label: "Time Spent", isSortable: false, isSelectable: false },
   { label: "Submission Type", isSortable: false, isSelectable: false },
   { label: "Internet Speed", isSortable: false, isSelectable: false },
-  { label: "Rank", isSortable: false, isSelectable: false },
+  { label: "Semester", isSortable: false, isSelectable: false },
   { label: "Mark", isSortable: true, isSelectable: false },
 ];
 
