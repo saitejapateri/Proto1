@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Stack } from "@mui/material";
+import { Typography, Stack, Grid } from "@mui/material";
 import ReactCalendar from "../../../components/common/ReactCalendar/ReactCalendar";
 import CalendarSkeleton from "../../../components/common/CalendarSkeleton";
 
@@ -13,6 +13,7 @@ function ReactCalendarComp() {
   });
 
   return (
+    <Grid md item sx={{marginBottom : '30px'}}>
     <Stack>
       <Typography
         sx={{
@@ -27,6 +28,7 @@ function ReactCalendarComp() {
       </Typography>
       <Stack>{timelap ? <CalendarSkeleton /> : <ReactCalendar />}</Stack>
     </Stack>
+    </Grid>
   );
 }
 

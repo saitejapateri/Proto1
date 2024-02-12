@@ -44,7 +44,7 @@ const AssessmentDetailCard = ({
         padding: "10px 27px 10px 10px",
         border: "0",
         backgroundColor : palette.primary[0],
-        border : `1px solid ${palette.grey[100]}`
+        border : `1px solid ${palette.grey[100]}`,
       }}
     >
       <Stack

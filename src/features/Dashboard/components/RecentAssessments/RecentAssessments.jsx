@@ -137,7 +137,7 @@ function RecentAssessments({ recent_assessments }) {
                   <ListItemIcon>
                     <Radio checked={subject.name === selectedSubject} sx={{color : palette.common.black}}/>
                   </ListItemIcon>
-                  <Typography variant="body1">{subject.name}</Typography>
+                  <Typography variant="body1" sx={{fontWeight : '400'}}>{subject.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
