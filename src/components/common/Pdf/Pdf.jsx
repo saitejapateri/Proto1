@@ -4,11 +4,11 @@ import { Box, Stack, Typography, Divider, Grid } from "@mui/material";
 import { useState } from "react";
 import { Document, Page, Thumbnail, pdfjs } from "react-pdf";
 import { useSelector } from "react-redux";
-import PdfHeader from "./PdfHeader";
+import PdfHeader from "../PdfHeader";
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import './Pdf.css'
-import palette from "../../theme/palette";
+import palette from "../../../theme/palette";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const options = {

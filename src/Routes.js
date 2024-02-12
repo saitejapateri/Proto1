@@ -4,7 +4,7 @@ import Login from './components/common/Login';
 import Root from './Root';
 import DashboardPage from './pages/DashboardPage.jsx';
 import CoursePage from './pages/CoursePage'
-import Pdf from './components/common/Pdf';
+import Pdf from './components/common/Pdf/Pdf';
 
 const AppRouter = () => {
   return (
