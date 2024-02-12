@@ -82,14 +82,14 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
         // height : '30px',
         display : 'flex',
         flexDirection : 'row',
-        justifyContent : 'space-evenly',
+        justifyContent : 'space-around',
         background:
-          stu.submission_type === 2
+          stu.submission_type === "not attempted"
             ? theme.palette.warning[200]
             : "",
         "&:hover": {
           background:
-            stu.submission_type === 2
+            stu.submission_type === "not attempted"
               ? theme.palette.warning[300]
               : theme.palette.grey[100], // Set your desired background color
         }
@@ -110,7 +110,7 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
         </Typography>
       </TableCell>
       <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
-        <Typography variant="body1" sx={{ ...commonStyles,color: theme.palette.grey[900] }}>
+        <Typography variant="body1" sx={{ ...commonStyles,color: theme.palette.grey[900], textAlign : 'center'}}>
           {stu.total_timespent===null ? 0 : stu.total_timespent}Min
         </Typography>
       </TableCell>
@@ -141,62 +141,28 @@ const MuiCustomStudentTableRow = ({ key, stu, viewStudentResult }) => {
         </Typography>
       </TableCell>
       <TableCell scope="row" sx={{ border: "none" }}>
-        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], paddingLeft : '50%'}}>
+        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], textAlign : 'end'}}>
           {getInternetQuality(stu.internet_speed)}
         </Typography>
       </TableCell>
-      <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
-        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], paddingLeft : '90%'}}>
-          {stu.semester}
-        </Typography>
-      </TableCell>
-      {/* <TableCell scope='row' sx={{ border: 'none' }}>
-        <Typography variant='body1' sx={{ color: theme.palette.grey[900] }}>
-          {stu.effective_time_utilization}%
-        </Typography>
-      </TableCell> */}
-      {/* <TableCell scope='row' sx={{ border: 'none' }}>
-        <Typography variant='body1' sx={{ color: theme.palette.grey[900] }}>
-          {stu.submitted_at}
-        </Typography>
-      </TableCell> */}
       <TableCell
         scope="row"
         sx={{ border: "none", borderRadius: "0 6px 6px 0", ...tableCellStylings}}
       >
         <Stack
           direction="row"
-          justifyContent="space-between"
+          // justifyContent="flex-end"
           alignItems="center"
         >
-          <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], ...tableCellStylings, paddingLeft : '50%'}}>
+          <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], ...tableCellStylings, textAlign : 'center'}}>
             {stu.percentage_scored === null ? 0 : stu.percentage_scored}%
           </Typography>
-          {/* <IconButton
-            aria-label='delete'
-            onClick={() => {
-              viewStudentResult(stu)
-            }}
-            sx={{
-              height: '24px',
-              width: '24px',
-              background: theme.palette.grey[500],
-              borderRadius: '6px',
-              '&:hover': {
-                background: theme.palette.grey[900], // Set your desired background color
-              },
-            }}
-          >
-            <ArrowUpwardOutlinedIcon
-              color={theme.palette.grey[100]}
-              sx={{
-                transform: 'rotate(90deg)',
-                fontSize: '20px',
-                fontWeight: 600,
-              }}
-            />
-          </IconButton> */}
         </Stack>
+      </TableCell>
+      <TableCell scope="row" sx={{ border: "none", ...tableCellStylings}}>
+        <Typography variant="body1" sx={{...commonStyles, color: theme.palette.grey[900], textAlign : 'center'}}>
+          {stu.attempted === 0 ? "not attempted" : "attempted"}
+        </Typography>
       </TableCell>
     </TableRow>
   );
